@@ -1,15 +1,23 @@
 <template>
-    <div @click="alert">
-        ssr2222
+    <div>
+        {{aaaa}}
+        <router-view/>
     </div>
 </template>
 
 <script>
 export default {
+
+    data(){
+        return {
+            aaaa: 333,
+        }
+    },
+
     methods: {
         alert(){
-            alert(222)
+            this.aaaa = Math.random()
         }
-    }
+    },
 }
 </script>

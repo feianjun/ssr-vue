@@ -1,34 +1,26 @@
-
 const path = require('path');
-
-const VueLoaderPlugin = require('vue-loader/lib/plugin')
-
-
-const dir = (...agu)=> path.resolve(...agu)
-
+const {VueLoaderPlugin} = require('vue-loader')
 module.exports = {
-    output: {
-        path: path.resolve('dist'),
-        filename: '[name].js',
-    },
     resolve: {
         alias: {
-            vue: 'vue/dist/vue.js'
+            vue: 'vue/dist/vue.js',
+            '@': path.resolve('src'),
         }
     },
+    output: {
+        path: path.resolve('dist'),
+        filename: '[name].js'
+    },
     module: {
-        rules: [
-            {
-                test: /\.vue$/,
-                loader: 'vue-loader'
-            },
-            {
-                test: /\.js$/,
-                loader: 'babel-loader'
-            }
-        ]
+        rules: [{
+            test: /\.vue$/,
+            loader: 'vue-loader'
+        }, {
+            test: /\.js$/,
+            loader: 'babel-loader'
+        }]
     },
     plugins: [
         new VueLoaderPlugin()
     ]
-}
+};
